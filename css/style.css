@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap');
+
+/* GENERAL STYLING */
+body {
+  margin: 0 auto;
+  background-image: url("../img/mt-kenya-2.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+div a {
+  text-decoration: none;
+  color: #f2dede;
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 1.25em;
+}
+
+div a:hover {
+  color: #fff;
+  font-size: 1.3em;
+  transition: 0.2s ease;
+}
+
+/* LOGIN PAGE STYLING */
+#loginheader {
+  text-align: center;
+  font-family: 'Big Shoulders Display', cursive;
+  color: rgba(255, 255, 255, 1);
+}
+
+.loginarea {
+  width: 500px;
+  height: 450px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgba(14, 62, 100, 0.7);
+  margin-top: 160px;
+}
+
+.loginarea img {
+  width: 150px;
+  height: 150px;
+  margin-top: -60px;
+}
+
+input[type="text"], input[type="password"] {
+  margin-top: 30px;
+  height: 45px;
+  width: 300px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding-left: 40px;
+}
+
+input[type="submit"]:hover {
+  background-color: #fff;
+  color: #27AE60;
+  /* font-size: 1em; */
+  transition: 0.2s ease;
+}
+
+.btn-login {
+  padding: 15px 25px;
+  border: none;
+  background-color: #27ae60;
+  color: #fff;
+  border-radius: 5%;
+}
+
+.error {
+  width: 92%;
+  margin: 0px auto;
+  padding: 10px;
+  border: 1px solid #a94442;
+  color: #a94442;
+  background: #f2dede;
+  border-radius: 5px;
+  text-align: left;
+}
+
+/* INDEX PAGE STYLING */
