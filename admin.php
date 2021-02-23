@@ -8,7 +8,7 @@
   //if they're not in this access group they are redirected to login.php
   if($logged_user['group_id'] == 100){
     if(isset($_SESSION['user'])){
-      echo "Welcome " . $_SESSION['user'];
+      echo "Welcome " . $logged_user['staff_name'];
       echo "<br>";
     }
   }else {

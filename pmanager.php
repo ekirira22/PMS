@@ -8,7 +8,8 @@
   //if they're not in this access group they are redirected to login.php
   if($logged_user['group_id'] == 300){
     if(isset($_SESSION['user'])){
-      echo "Welcome " . $_SESSION['user'];
+      echo "Welcome " . $logged_user['staff_name'];
+      echo "<br>";
     }
   }else {
     header("location: login.php?warning=InvalidURL");
@@ -24,7 +25,7 @@
    <link href="" rel="stylesheet" />
    <link href="css/styles.css" rel="stylesheet" />
 
-   <title>Dashboard - Project Manager</title>
+   <title>Dashboard - Project Manager </title>
  </head>
 
  <body>
