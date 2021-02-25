@@ -68,15 +68,15 @@ function login(){
 
       if($logged_in_user['group_id'] == 100){ //if they belong to admin group id
         $_SESSION['user'] = $logged_in_user['user_name'];
-        header('location: admin.php');
+        header('location: ./admin/admin.php');
       }
       else if($logged_in_user['group_id'] == 200){ //if they belong to chief officer group id
         $_SESSION['user'] = $logged_in_user['user_name'];
-        header('location: cofficer.php');
+        header('location: ./cofficer/cofficer.php');
       }
       else if($logged_in_user['group_id'] == 300){ //if they belong to project manager group id
         $_SESSION['user'] = $logged_in_user['user_name'];
-        header('location: pmanager.php');
+        header('location: ./pmanager/pmanager.php');
       }
     }else{
         array_push($errors, "Wrong username or password");

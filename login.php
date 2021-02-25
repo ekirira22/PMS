@@ -1,13 +1,12 @@
 <?php
-  include('functions.php')
+  include('./db/functions.php')
  ?>
 <!DOCTYPE html>
  <html>
 
  <head>
    <title> Login Page</title>
-   <link rel="stylesheet" href="css\style.css">
-   <!--    <link rel="stylesheet" a href="css\font-awesome.min.css">-->
+   <link rel="stylesheet" href="css/style.css">
  </head>
 
  <body>
