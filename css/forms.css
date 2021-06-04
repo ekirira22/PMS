@@ -1,0 +1,97 @@
+
+     html, body {
+     min-height: 100%;
+     }
+     form, input, select, p {
+     padding: 0;
+     margin: 0;
+     outline: none;
+     font-family: Roboto, Arial, sans-serif;
+     font-size: 16px;
+     color: #000000;
+     }
+     .error{
+       width: 92%;
+       margin: 0px auto;
+       padding: 10px;
+       border: 1px solid #a94442;
+       color: #a94442;
+       background: #f2dede;
+       border-radius: 5px;
+       text-align: left;
+     }
+     .success {
+       width: 100%;
+       margin: 0px auto;
+       padding: 10px;
+       border: 1px solid #04AA6D;
+       color: #fff;
+       background: #04AA6D;
+       border-radius: 5px;
+       text-align: left;
+     }
+     .main-block {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     padding: 25px;
+     background: #FFFFFF;
+     }
+
+     .title {
+     display: flex;
+     align-items: center;
+     margin-bottom: 20px;
+     }
+     .info {
+     display: flex;
+     flex-direction: column;
+     }
+     input, select {
+     padding: 5px;
+     margin-bottom: 30px;
+     background: transparent;
+     border: none;
+     border-bottom: 1px solid #eee;
+     }
+     input::placeholder {
+     color: #8390A2;
+     }
+     option:focus {
+     border: none;
+     }
+     option {
+     background: #ffffff;
+     border: none;
+     }
+
+     input[type="submit"]:hover{
+     background: #85d6de;
+     }
+     .btn-submit{
+       padding: 10px 5px;
+       margin-top: 20px;
+       border-radius: 5px;
+       border: none;
+       background: #027581;
+       text-decoration: none;
+       font-size: 15px;
+       font-weight: 400;
+       color: #fff;
+       width: 100%;
+     }
+     @media (min-width: 568px) {
+     html, body {
+     height: 100%;
+     }
+     .main-block {
+     flex-direction: row;
+     height: calc(100% - 50px);
+     }
+     form {
+     flex: 1;
+     height: auto;
+     }
+     }

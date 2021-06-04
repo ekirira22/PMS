@@ -62,7 +62,7 @@
              <span class="ti-clipboard"></span>
              <span class="dropdown-btn">Projects & Tasks</span>
              <div class="dropdown-container">
-               <a href="#">Add Project</a> <br>
+               <a href="../projects/add.php">Add Project</a> <br>
                <a href="#">Manage Project</a> <br>
                <a href="#">Add Tasks</a> <br>
                <a href="#">Manage Tasks</a>

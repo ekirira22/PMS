@@ -24,20 +24,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
   <link href="../css/styles.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-
   <title>Dashboard - Admin</title>
 </head>
 
 <body>
-  <input type="checkbox" id="sidebar-toggle">
   <div class="sidebar">
     <!-- menu header -->
     <div class="sidebar-header">
       <h3 class="brand">
         <span>Nyeri County PMS</span>
       </h3>
-      <label for="sidebar-toggle" class="ti-menu-alt"></label for="sidebar-toggle"> <!-- for side bar collapse and expand -->
     </div>
 
     <!-- menu body -->
@@ -45,35 +41,31 @@
       <ul>
         <!-- item 1 -->
         <li>
-          <a href="#">
-            <span class="ti-home"></span>
+          <a href="admin.php">
             <span>Dashboard</span>
           </a>
         </li>
         <!-- item 2 -->
         <li>
-            <span class="ti-face-smile"></span>
-            <span class="dropdown-btn">Staff</span>
-            <div class="dropdown-container">
+            <span>Staff</span>
+            <div>
               <a href="#">Add Employee</a> <br>
               <a href="#">Manage Employees</a>
             </div>
         </li>
         <!-- item 3 -->
         <li>
-            <span class="ti-agenda"></span>
-            <span class="dropdown-btn">Work Flow</span>
-            <div class="dropdown-container">
+            <span>Work Flow</span>
+            <div>
               <a href="#">Check Projects</a> <br>
               <a href="#">Approve/Decline Projects</a> <br>
             </div>
         </li>
       <!-- item 4 -->
         <li>
-            <span class="ti-clipboard"></span>
-            <span class="dropdown-btn">Projects & Tasks</span>
-            <div class="dropdown-container">
-              <a href="#">Add Project</a> <br>
+            <span>Projects & Tasks</span>
+            <div>
+              <a href="./add.php">Add Project</a> <br>
               <a href="#">Manage Project</a> <br>
               <a href="#">Add Tasks</a> <br>
               <a href="#">Manage Tasks</a>
@@ -82,15 +74,13 @@
         <!-- item 5 -->
         <li>
           <a href="#">
-            <span class="ti-folder"></span>
             <span>Reports</span>
           </a>
         </li>
         <!-- item 6 -->
         <li>
-            <span class="ti-settings"></span>
-            <span class="dropdown-btn">Settings</span>
-            <div class="dropdown-container">
+            <span>Settings</span>
+            <div>
               <a href="#">Change Password</a> <br>
               <a href="#">Change Profile Picture</a>
             </div>
@@ -98,7 +88,6 @@
         <!-- item 7 -->
         <li>
           <a href="../db/logout.php?logout">
-            <span class="ti-hand-stop"></span>
             <span>LOG OUT</span>
           </a>
         </li>
@@ -118,9 +107,8 @@
       <div>
         <span>Administrator Page</span>
       </div>
-      <div class="social-icons">
-        <span class="ti-bell"></span>
-        <span class="ti-comment"></span>
+      <div class="header-right">
+
         <span><?php echo "Welcome " . $logged_user['staff_name']; ?></span>
         <div> <img src="../img/profile0.png" alt=""> </div> <!--can upload user's picture and append it here if time allows -->
       </div>
@@ -135,7 +123,6 @@
         <!-- dashboard card 1 -->
         <div class="card-single">
           <div class="card-body">
-            <span class="ti-briefcase"></span>
             <div>
               <h5>All Projects</h5>
               <h4>100</h4>
@@ -149,7 +136,6 @@
         <!-- dashboard card 2 -->
         <div class="card-single">
           <div class="card-body">
-            <span class="ti-light-bulb"></span>
             <div>
               <h5>Completed Projects</h5>
               <h4>60</h4>
@@ -163,7 +149,6 @@
         <!-- dashboard card 3 -->
         <div class="card-single">
           <div class="card-body">
-            <span class="ti-car"></span>
             <div>
               <h5>Ongoing Projects</h5>
               <h4>20</h4>
@@ -180,7 +165,6 @@
         <!-- dashboard card 4 -->
         <div class="card-single">
           <div class="card-body">
-            <span class="ti-check-box"></span>
             <div>
               <h5>Approved Projects</h5>
               <h4>10</h4>
@@ -194,7 +178,6 @@
         <!-- dashboard card 5 -->
         <div class="card-single">
           <div class="card-body">
-            <span class="ti-reload"></span>
             <div>
               <h5>Pending Projects</h5>
               <h4>5</h4>
@@ -208,7 +191,6 @@
         <!-- dashboard card 6 -->
         <div class="card-single">
           <div class="card-body">
-            <span class="ti-trash"></span>
             <div>
               <h5>Delayed Projects</h5>
               <h4>5</h4>

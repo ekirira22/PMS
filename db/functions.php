@@ -12,6 +12,7 @@ if(mysqli_connect_errno()){
 //variable declaration
 $username = "";
 $errors = array();
+$successes = array();
 
 //escape string sequence
 function e($val){
@@ -30,10 +31,25 @@ function display_error(){
   }
 }
 
-//we'll call the login () function if login button is clicked
+function display_success(){
+  global $successes;
+  if(count($successes)>0){
+    echo '<div class="success">';
+      foreach ($successes as $success) {
+        echo $success . '<br>';
+      }
+      echo '</div>';
+  }
+}
+
+//we call the login () function if login button is clicked
 
 if(isset($_POST['login'])){
   login();
+}
+//we'll call the add project () function if add project button is clicked
+if(isset($_POST['addproject'])){
+  addProject();
 }
 
 //LOGIN VARIOUS USERS DEPENDING IF ADMIN, CHIEF OFFICER OR PROJECT MANAGER
@@ -85,4 +101,54 @@ function login(){
 
 }//end of login function
 
+//Add Project function
+function addProject(){
+  global $db, $errors, $successes;
+  //grab form values
+  $pname = e($_POST['pname']);
+  $dept = intval(e($_POST['dept'])) ;
+  $sub = e($_POST['sub']);
+  $start = e($_POST['start']);
+  $end = e($_POST['end']);
+  $budget = e($_POST['budget']);
+  $fyear = intval(e($_POST['fyear'])) ;
+  $status = "pending";
+
+  //form validation
+  if(empty($pname)){
+    array_push($errors, "Please enter the Project Name");
+  }
+  if(empty($dept)){
+    array_push($errors, "Please enter the Department");
+  }
+  if(empty($sub)){
+    array_push($errors, "Please enter the Sub-county");
+  }
+  if(empty($start)){
+    array_push($errors, "Please enter the start date");
+  }
+  if(empty($end)){
+    array_push($errors, "Please enter the end date");
+  }
+  if(empty($budget)){
+    array_push($errors, "Please enter the budget amount");
+  }
+  else if(empty($fyear)){
+    array_push($errors, "Please enter the Financial Year");
+  }
+else {
+  $query = "INSERT INTO t_projects (project_id ,project_name, dep_fk, subcounty, start_date, end_date, f_year, budget, status) VALUES ('','$pname','$dept','$sub','$start','$end','$fyear', '$budget', '$status')";
+  $run = mysqli_query($db,$query);
+  if($run){
+    array_push($successes, "The project has been added Successfully!");
+    echo "<script>if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+          }</script>"; // A javascript approach to prevent a resubmit on refresh and back button.
+  }else{
+    echo '<script type="text/javascript"> alert("Something Went Wrong!")  </script>';
+  }
+}
+
+
+}
  ?>
