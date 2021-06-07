@@ -11,7 +11,7 @@
      color: #000000;
      }
      .error{
-       width: 92%;
+       width: 100%;
        margin: 0px auto;
        padding: 10px;
        border: 1px solid #a94442;
@@ -28,7 +28,7 @@
        color: #fff;
        background: #04AA6D;
        border-radius: 5px;
-       text-align: left;
+       text-align: center;
      }
      .main-block {
      display: flex;
@@ -68,7 +68,7 @@
      }
 
      input[type="submit"]:hover{
-     background: #85d6de;
+     opacity: 50%;
      }
      .btn-submit{
        padding: 10px 5px;
@@ -82,6 +82,30 @@
        color: #fff;
        width: 100%;
      }
+     .btn-edit{
+       padding: 5px 2.5px;
+       margin-top: 10px;
+       border-radius: 5px;
+       border: none;
+       background: #027581;
+       text-decoration: none;
+       font-weight: 400;
+       color: #fff;
+       width: 100%;
+     }
+     .btn-delete{
+       padding: 5px 2.5px;
+       margin-top: 10px;
+       border-radius: 5px;
+       border: none;
+       background: #ea4646;
+       text-decoration: none;
+       font-size: 15px;
+       font-weight: 400;
+       color: #fff;
+       width: 100%;
+     }
+
      @media (min-width: 568px) {
      html, body {
      height: 100%;

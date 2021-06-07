@@ -52,6 +52,12 @@ if(isset($_POST['addproject'])){
   addProject();
 }
 
+if(isset($_POST['update'])){
+  updateProject();
+}
+
+
+
 //LOGIN VARIOUS USERS DEPENDING IF ADMIN, CHIEF OFFICER OR PROJECT MANAGER
 
 function login(){
@@ -144,11 +150,64 @@ else {
     echo "<script>if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
           }</script>"; // A javascript approach to prevent a resubmit on refresh and back button.
-  }else{
-    echo '<script type="text/javascript"> alert("Something Went Wrong!")  </script>';
+    }else{
+      echo '<script type="text/javascript"> alert("Something Went Wrong!")  </script>';
+    }
   }
 }
 
+function updateProject(){
+  global $db, $errors, $successes;
+  //grab form values
+  $pid = $_GET['id'];
+  $pname = e($_POST['pname']);
+  $dept = intval(e($_POST['dept'])) ;
+  $sub = e($_POST['sub']);
+  $start = e($_POST['start']);
+  $end = e($_POST['end']);
+  $budget = e($_POST['budget']);
+  $fyear = intval(e($_POST['fyear'])) ;
+  $status = "pending";
+
+  //form validation
+  if(empty($pname)){
+    array_push($errors, "Please enter the Project Name");
+  }
+  if(empty($dept)){
+    array_push($errors, "Please enter the Department");
+  }
+  if(empty($sub)){
+    array_push($errors, "Please enter the Sub-county");
+  }
+  if(empty($start)){
+    array_push($errors, "Please enter the start date");
+  }
+  if(empty($end)){
+    array_push($errors, "Please enter the end date");
+  }
+  if(empty($budget)){
+    array_push($errors, "Please enter the budget amount");
+  }
+  else if(empty($fyear)){
+    array_push($errors, "Please enter the Financial Year");
+  }else{
+    $query = "UPDATE t_projects SET project_name = '".$pname."', dep_fk = '".$dept."',subcounty = '".$sub."', start_date = '".$start."',
+    end_date = '".$end."', budget = '".$budget."', f_year = '".$fyear."', status = '".$status."' WHERE project_id = '".$pid."' ";
+
+    $run = mysqli_query($db,$query);
+    if($run){
+      array_push($successes, "The project has been Updated Successfully!");
+      echo "<script>if ( window.history.replaceState ) {
+              window.history.replaceState( null, null, window.location.href );
+            }</script>"; // A javascript approach to prevent a resubmit on refresh and back button.
+      }else{
+        echo '<script type="text/javascript"> alert("Something Went Wrong!")  </script>';
+      }
+
+  }
+
 
 }
+
+
  ?>

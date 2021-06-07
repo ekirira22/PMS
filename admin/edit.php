@@ -14,6 +14,29 @@
   }else {
     header("location: ../login.php?warning=InvalidURL");
 }
+
+$pid = $_GET['id'];
+$pname = "";
+$dept = "";
+$sub = "";
+$start = "";
+$end = "";
+$budget = "";
+$fyear = "";
+
+$results = mysqli_query($db, "SELECT * FROM t_projects WHERE project_id = $pid");
+while($row = mysqli_fetch_assoc($results)){
+  $pid = $row['project_id'];
+  $pname = $row['project_name'];
+  $dept = $row['dep_fk'];
+  $sub = $row['subcounty'];
+  $start = $row['start_date'];
+  $end = $row['end_date'];
+  $budget = $row['budget'];
+  $fyear = $row['f_year'];
+}
+
+
  ?>
 
 <!DOCTYPE html>
@@ -24,7 +47,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
   <link href="../css/styles.css" rel="stylesheet" />
-  <title>ADD PROJECT</title>
+  <title>MANAGE PROJECT</title>
 
   <link rel="stylesheet" href="../css/forms.css">
 </head>
@@ -102,7 +125,7 @@
     <!-- top header -->
     <header>
       <div class="text-center">
-        &nbsp;Add Project
+        &nbsp;Update Project
       </div>
       <div class="header-right">
         <span><?php echo "Welcome " . $logged_user['staff_name']; ?></span>
@@ -116,14 +139,14 @@
     <?php echo display_error();?> <br>
     <?php echo display_success();?>
     <div class="main-block">
-      <form action="./add.php" method="POST">
+      <form action="edit.php?id=<?php echo $pid;?>" method="POST">
 
         <div class="title">
-          <h2>Add Project Definition</h2>
+          <h2>Update Project Definition</h2>
         </div>
         <div class="info">
           Project Title
-          <input type="text" name="pname">
+          <input type="text" name="pname" value="<?php echo $pname; ?>">
           Department
           <select name="dept">
             <option value="" selected>-- choose one --</option>
@@ -151,11 +174,11 @@
             <option value="Tetu">Tetu Constituency</option>
           </select>
           Start Date
-          <input type="date" name="start">
+          <input type="date" name="start" value="<?php echo $start; ?>">
           End Date
-          <input type="date" name="end">
+          <input type="date" name="end" value="<?php echo $end; ?>">
           Budget
-          <input type="number" name="budget" placeholder="Amount in KES">
+          <input type="number" name="budget" placeholder="Amount in KES" value="<?php echo $budget; ?>">
           Financial Year
           <select name="fyear">
             <option value="" selected>-- choose one --</option>
@@ -166,7 +189,7 @@
           </select>
         </div>
 
-        <input type="submit" name="addproject" value="ADD PROJECT" class="btn-submit">
+        <input type="submit" name="update" value="UPDATE PROJECT" class="btn-submit">
       </form>
     </div>
   </main>
