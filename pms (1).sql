@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2021 at 11:05 AM
+-- Generation Time: Jun 07, 2021 at 12:42 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -20,6 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `pms`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getProjectDetails` ()  SELECT t_projects.project_id,t_projects.project_name,t_departments.dep_name,
+t_projects.subcounty,t_projects.start_date,t_projects.end_date
+,t_projects.budget,t_financial_year.year_name,t_projects.status FROM t_projects JOIN t_departments ON t_projects.dep_fk = t_departments.dep_id JOIN t_financial_year ON t_projects.f_year = t_financial_year.year_id ORDER BY t_projects.project_id DESC$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -58,17 +68,25 @@ INSERT INTO `t_county_staff` (`staff_id`, `staff_name`, `id_number`, `dep_fk`, `
 CREATE TABLE `t_departments` (
   `dep_id` int(11) NOT NULL,
   `dep_name` varchar(80) NOT NULL,
-  `description` longtext DEFAULT NULL,
-  `status` varchar(60) NOT NULL
+  `description` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `t_departments`
 --
 
-INSERT INTO `t_departments` (`dep_id`, `dep_name`, `description`, `status`) VALUES
-(1000, 'IT Department', 'Backbone of IT Structure', 'active'),
-(1001, 'Finance and Economic Planning', 'The Department of Finance and Economic Planning', 'active');
+INSERT INTO `t_departments` (`dep_id`, `dep_name`, `description`) VALUES
+(1000, 'IT Department', 'Backbone of IT Structure'),
+(1001, 'Finance and Economic Planning', 'The Department of Finance and Economic Planning'),
+(1002, 'Agriculture, Livestock & Fisheries', ''),
+(1003, 'County Public Service & Solid Waste Management', ''),
+(1004, 'Health Services', 'Health Services'),
+(1005, 'Transport, Public Works, Infrastructure & Energy', 'Transport, Public Works, Infrastructure & Energy'),
+(1006, 'Land, Housing and Urban Development', 'Land, Housing and Urban Development'),
+(1007, 'Water, Irrigation, Environment and Climate Change', 'Water, Irrigation, Environment and Climate Change'),
+(1008, 'Gender, Youth and Social Services', 'Gender, Youth and Social Services'),
+(1009, 'Trade, Tourism, Culture and Cooperative Development', 'Trade, Tourism, Culture and Cooperative Development'),
+(1010, 'Education & Sports', 'Education & Sports');
 
 -- --------------------------------------------------------
 
@@ -115,9 +133,12 @@ CREATE TABLE `t_projects` (
 --
 
 INSERT INTO `t_projects` (`project_id`, `project_name`, `dep_fk`, `subcounty`, `start_date`, `end_date`, `f_year`, `budget`, `status`) VALUES
-(107, 'Budget Approval', 1001, 'nyeri', '2021-06-04', '2021-06-17', 3, '1254000', 'pending'),
-(108, 'Building WAN Network', 1000, 'nyeri', '2021-06-20', '2021-07-04', 3, '14000000', 'pending'),
-(109, 'afsdv', 1001, 'muk', '2021-06-04', '2021-06-23', 4, '5845120', 'pending');
+(115, 'Build a Dam', 1007, 'tetu', '2021-06-12', '2021-07-10', 3, '1000000', 'complete'),
+(119, 'Create a Fun Park', 1006, 'Mathira', '2021-06-15', '2021-06-25', 4, '14000000', 'pending'),
+(121, 'Build a dam for Irrigation', 1002, 'Mukurweini', '2021-06-07', '2021-06-28', 3, '1000000', 'pending'),
+(122, 'Build a Shelter for Motorbikes', 1003, 'keini', '2021-06-21', '2021-06-27', 3, '543650', 'pending'),
+(123, 'Build a County Hospital', 1004, 'Nyeri Town', '2021-06-14', '2022-01-10', 4, '178000000', 'pending'),
+(124, 'Build a Road', 1005, 'Othaya', '2021-06-08', '2022-02-28', 4, '505000000', 'pending');
 
 --
 -- Indexes for dumped tables
@@ -164,7 +185,7 @@ ALTER TABLE `t_financial_year`
 -- AUTO_INCREMENT for table `t_projects`
 --
 ALTER TABLE `t_projects`
-  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- Constraints for dumped tables
